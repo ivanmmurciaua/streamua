@@ -13,7 +13,7 @@
 			<h2 class="logotipo">STREAMUA</h2>
 			<nav>
 				<a href="#" class="activo">Inicio</a>
-				<a href="#">Programas</a>
+				<a href="#">Series</a>
 				<a href="#">Películas</a>
 				<!--<a href="#">Más Recientes</a>-->
 				<a href="#">Mi lista</a>
