@@ -114,6 +114,20 @@
 				<button role="button" id="flecha-derecha" class="flecha-derecha"><i class="fas fa-angle-right"></i></button>
 			</div>
 		</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start">
+  <!-- Grid container -->
+  <div class="container p-4">
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    GI 2020/21
+    <a class="text-dark" href="http://streamua.ddnsking.com/">StreamUA</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
 	</main>
 	
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
