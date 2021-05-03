@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,9 +18,20 @@
 				<a href="#" class="activo">Inicio</a>
 				<a href="#">Series</a>
 				<a href="#">Películas</a>
-				<!--<a href="#">Más Recientes</a>-->
-				<a href="#">Mi lista</a>
-				<a href="#">Login</a>
+				<?php
+					if(isset($_SESSION["login"])) {
+						echo "<a href='milista.php'> Mi Lista </a>";	
+					}
+				?>
+				<?php
+					if(!isset($_SESSION["login"])) {
+						echo "<a href='./login.php'>Login</a>";	
+					}
+					else{
+						echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
+					}
+				?>
+				
 			</nav>
 		</div>
 	</header>

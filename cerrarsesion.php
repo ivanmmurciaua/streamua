@@ -3,10 +3,8 @@
 ob_start();
 session_start();
 
-$_SESSION["login"] = "elbicho";
-
 // Cerrar sesión
-//unset($_SESSION["login"]);
+unset($_SESSION["login"]);
 
 ?>
 <!DOCTYPE html>
@@ -27,5 +25,7 @@ $_SESSION["login"] = "elbicho";
       </nav>
     </div>
   </header>
+  <h1 style="color:white"> Sesión cerrada, pulse en Inicio para volver a la pantalla principal... </h1>
+</body>
 
 </html>
