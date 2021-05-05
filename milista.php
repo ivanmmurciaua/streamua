@@ -12,9 +12,11 @@
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="#" class="activo">Inicio</a>
-        <a href="#">Mi lista</a>
-      </nav>
+        <a href="./index.php" class="activo">Inicio</a>
+        <a href="series.php">Series</a>
+        <a href="peliculas.php">Películas</a>
+        <a href='milista.php'> Mi Lista </a> 
+       <!-- <a href='./cerrarsesion.php'>Cerrar sesión</a>  -->
     </div>
   </header>
 

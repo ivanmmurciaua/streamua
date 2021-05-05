@@ -16,8 +16,8 @@ session_start();
 			<h2 class="logotipo">STREAMUA</h2>
 			<nav>
 				<a href="#" class="activo">Inicio</a>
-				<a href="#">Series</a>
-				<a href="#">Películas</a>
+				<a href="series.php">Series</a>
+				<a href="peliculas.php">Películas</a>
 				<?php
 					if(isset($_SESSION["login"])) {
 						echo "<a href='milista.php'> Mi Lista </a>";	

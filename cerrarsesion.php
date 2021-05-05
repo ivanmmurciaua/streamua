@@ -1,10 +1,10 @@
 <?php
 
-ob_start();
-session_start();
+//ob_start();
+//session_start();
 
 // Cerrar sesión
-unset($_SESSION["login"]);
+//unset($_SESSION["login"]);
 
 ?>
 <!DOCTYPE html>

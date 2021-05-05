@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href='estilo.xsl' type='text/xsl'?>
+
+<principal>
+	<generos tipo='COMEDIA'>
+		<pelicula>
+			<URL_contenido>https://www.streamua.com/peliculas/borat</URL_contenido>
+			<titulo>BORAT</titulo>
+			<resumen>BORAT ...</resumen>
+			<idioma>ESPAÑOL, INGLÉS, CAT</idioma>
+			<subtitulos>ESPAÑOL, INGLÉS, CAT</subtitulos>
+			<actores>JULIAN, SARA, MARÍA</actores>
+			<director>LUCÍA</director>
+		</pelicula>
+	</generos>
+
+	<generos tipo='TERROR'>
+		<pelicula>
+			<URL_contenido>https://www.streamua.com/peliculas/dracula</URL_contenido>
+			<titulo>DRACULA</titulo>
+			<resumen>DRACULA XXX</resumen>
+			<idioma>ESPAÑOL, INGLÉS, CAT</idioma>
+			<subtitulos>ESPAÑOL, INGLÉS, CAT</subtitulos>
+			<actores>PEPE, MANOLO Y JULIAN</actores>
+			<director>PEDRO</director>
+		</pelicula>
+		<pelicula>
+			<URL_contenido>https://www.streamua.com/peliculas/insidius</URL_contenido>
+			<titulo>INSIDIUS</titulo>
+			<resumen>INSIDIUS ...</resumen>
+			<idioma>ESPAÑOL, INGLÉS</idioma>
+			<subtitulos>ESPAÑOL, INGLÉS</subtitulos>
+			<actores>MIKE, ROBERT</actores>
+			<director>ALEX</director>
+		</pelicula>
+	</generos>
+</principal>
