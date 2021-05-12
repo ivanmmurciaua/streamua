@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('./db/database.php');
 ?>
 
@@ -34,16 +35,30 @@ include('./db/database.php');
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="./index.php" class="activo">Inicio</a>
+        <a href="index.php">Inicio</a>
         <a href="series.php">Series</a>
-        <a href="peliculas.php">Películas</a>
-        <a href='milista.php'> Mi Lista </a> 
-       <!-- <a href='./cerrarsesion.php'>Cerrar sesión</a>  -->
+        <a href="peliculas.php" class="activo">Películas</a>
+
+        <?php
+          if(isset($_SESSION["logged"])) {
+            echo "<a href='milista.php'> Mi Lista </a>";  
+          }
+        ?>
+        
+        <?php
+          if(!isset($_SESSION["logged"])) {
+            echo "<a href='./login.php'>Login</a>"; 
+          }
+          else{
+            echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
+          }
+        ?>
+        
       </nav>
     </div>
   </header>
   <div class="contenedor-titulo-controles">
-    <h3>Peluclas</h3>
+    <h3>Películas</h3>
     <div class="indicadores"></div>
   </div>
   <div id="contenedor_peliculas">

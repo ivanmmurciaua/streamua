@@ -1,10 +1,10 @@
 <?php
 
 //ob_start();
-//session_start();
+session_start();
 
 // Cerrar sesión
-//unset($_SESSION["login"]);
+unset($_SESSION["logged"]);
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="./index.php" class="activo">Inicio</a>
+        <a href="./index.php">Volver a inicio</a>
       </nav>
     </div>
   </header>

@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
   <title>StreamUA</title>
@@ -23,7 +23,7 @@
   </header>
 
   <!-- HACER AQUI COSAS -->
-    Fecha expiracion
+  <!--  Fecha expiracion
     <input type="date" id="fechaExpiracion" name="fechaExpiracion">
   <br><br><br>
   	Descuento (%)
@@ -34,6 +34,32 @@
   <br><br><br>
 
   <input id="fservice" class="send" value="Enviar" type="button"></input> 
+-->
+  <!-- Prueba -->
+
+<form action='' class='form'>
+  <p class='field required'>
+    <label class='label required' for='name'>Fecha expiracion</label>
+    <input class='text-input' id='fechaExpiracion' name='fechaExpiracion' required type='date'>
+  </p>
+  <p class='field required half'>
+    <label class='label' for='email'>Descuento (%)</label>
+    <input class='text-input' id='descuento' name='descuento' required type='number'>
+  </p>
+  <p class='field half'>
+    <label class='label' for='phone'>emailAdministrador</label>
+    <input class='text-input' id='emailAdministrador' name='emailAdministrador' type='text'>
+  </p>
+  
+  <p class='field half'>
+    <input id="fservice" class="send" value="Enviar" type="button"></input>
+  </p>
+</form>
+
+
+
+
+
 
 </body>
 
@@ -56,17 +82,5 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- Footer -->
-<footer class="bg-light text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4">
-
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    GI 2020/21
-    <a class="text-dark" href="http://streamua.ddnsking.com/">StreamUA</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
 
 </html>

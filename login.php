@@ -1,9 +1,9 @@
 <?php
 //ob_start();
-//session_start();
-//$_SESSION["login"] = "elbicho";
+session_start();
+//
 // Cerrar sesión
-//unset($_SESSION["login"]);
+//unset($_SESSION['logged']);
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +38,11 @@
       <a href="">Login</a>
       <hr>
       <br>
-      <input type="text" placeholder="Usuario">
+      <input id="Usuario" type="text" placeholder="Usuario">
       <br>
-      <input type="password" placeholder="Contraseña">
+      <input id="Contrasena" type="password" placeholder="Contraseña">
       <br>
-      <button style="cursor: pointer;" class="login-btn">Login</button>
+      <button style="cursor: pointer;" onClick="login()" class="login-btn">Login</button>
     </div>
   </div>
   <div class="call-text">
@@ -73,9 +73,28 @@
             check = 0;
         }
     })
+
+    function login(){
+
+      var gofre = $('#Usuario').val();
+      var chocolate = $('#Contrasena').val();
+      var id = <?php echo json_encode(session_id()); ?>
+      
+      $.ajax({
+        type: 'POST',
+        url: 'admin/loginSession.php',
+        data: { id: id,
+                usu: gofre,
+                pwd: chocolate
+              },
+        success: function(data) {
+          alert(data);
+        }
+      });
+
+    }
+
   </script>
 
-  <link rel="stylesheet" href="./css/login.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </html>

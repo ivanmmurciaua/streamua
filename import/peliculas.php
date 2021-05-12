@@ -30,7 +30,7 @@ $ficherocsv = "netflix_titles2.csv";
 	datos[11] -> resumen
 */
 
-$id = 10;
+$id = 0;
 
 /* Rellenando PELICULAS */
 
@@ -72,19 +72,29 @@ if (($fichy = fopen($ficherocsv, "r")) !== FALSE) {
       $tipoGenero = str_replace(" ","",explode(",",$datos[10])[0]);
 
       // Rellenamos la tabla Contenido
-      $query1 = "INSERT INTO Contenido(idContenido,URL_contenido,titulo,resumen,idioma,actores,director,emailAdministrador,tipoGenero) VALUES (".$idContenido.",'".$URL_contenido."','".$titulo."','".$resumen."','".$idioma."','".$actores."','".$director."','".$emailAdministrador."','".$tipoGenero."')";
+      $query1 = "INSERT INTO Contenido(URL_contenido,titulo,resumen,idioma,actores,director,emailAdministrador,tipoGenero) VALUES ('".$URL_contenido."','".$titulo."','".$resumen."','".$idioma."','".$actores."','".$director."','".$emailAdministrador."','".$tipoGenero."')";
       $result1 = $conn->query($query1);
 
+      if($result1){
+        echo "------------------------------------------ <br />";
+        echo "<h1><b>FUNCA MIKE</b></h1>";
+        echo "------------------------------------------ <br />";
+      }
+      else{
+        echo "------------------------------------------ <br />";
+        echo "<h1><b>".$conn->error."</b></h1>";
+        echo "------------------------------------------ <br />";
+      }
       // Metemos la serie/pelicula en su tabla correspondiente
       
       // *******************************************MIRAR ESTA MIERDA****************************************
-      /*if(strcmp($datos[1], "Movie") !== 0){
+      if(strcmp($datos[1], "Movie") !== 0){
         $query2 = "INSERT INTO Serie(idContenido) VALUES (".$idContenido.")";
       }else{
         $query2 = "INSERT INTO Pelicula(idContenido) VALUES (".$idContenido.")";
       }
 
-      $result2 = $conn->query($query2);*/
+      $result2 = $conn->query($query2);
 
       echo "------------------------------------------ <br />";
 

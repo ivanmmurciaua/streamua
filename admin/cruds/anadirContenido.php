@@ -1,6 +1,6 @@
 <?php
 
-include('../db/database.php');
+include('../../db/database.php');
 
 $idContenido = $_POST['idContenido'];
 $urlContenido = $_POST['urlContenido'];
@@ -13,7 +13,7 @@ $director = $_POST['director'];
 $emailAdministrador = $_POST['emailAdministrador'];
 $tipoGenero = $_POST['tipoGenero'];
 
-$qry = "call añadirContenido($idContenido,'$urlContenido','$titulo','$resumen','$idioma','$subtitulos','$actores','$director','$emailAdministrador','$tipoGenero')";
+$qry = "call anadirContenido($idContenido,'$urlContenido','$titulo','$resumen','$idioma','$subtitulos','$actores','$director','$emailAdministrador','$tipoGenero')";
 
 if(!mysqli_query($conn,$qry)) {
 	echo  $conn->error;

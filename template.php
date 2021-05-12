@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,7 +17,23 @@
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="#" class="activo">Inicio</a>
+        <a href="index.php">Inicio</a>
+        <a href="series.php">Series</a>
+        <a href="peliculas.php">Películas</a>
+        <?php
+          if(isset($_SESSION["logged"])) {
+            echo "<a href='milista.php'> Mi Lista </a>";  
+          }
+        ?>
+        <?php
+          if(!isset($_SESSION["logged"])) {
+            echo "<a href='./login.php'>Login</a>"; 
+          }
+          else{
+            echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
+          }
+        ?>
+        
       </nav>
     </div>
   </header>

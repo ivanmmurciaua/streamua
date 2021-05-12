@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
   <title>StreamUA</title>
@@ -26,58 +26,51 @@
 
   <!-- HACER AQUI COSAS -->
 
- <div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
-
-        <div class="row">
-          <div class="col-50">
-    <h1>Añadir contenido</h1>
-    <hr>
-    <!-- Son 10, 5 en cada columna -->
-            <label for="fname"><i class="fa fa-user"></i> idContenido</label>
-            <input type="text" id="idContenido" name="idContenido">
-            <label for="email"><i class="fa fa-envelope"></i> urlContenido</label>
-            <input type="text" id="urlContenido" name="urlContenido">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Título</label>
-            <input type="text" id="titulo" name="titulo">
-            <label for="city"><i class="fa fa-institution"></i> Resumen</label>
-            <input type="text" id="resumen" name="resumen">
-            <label for="city"><i class="fa fa-institution"></i> Idioma</label>
-            <input type="text" id="idioma" name="idioma">
-
-          <div class="row">
-              
-            </div>
-          </div>
-
-          <div class="col-50">
-              <br><br><br>
-            <label for="cname">Subtitulos</label>
-            <input type="text" id="subtitulos" name="subtitulos">
-            <label for="ccnum">Actores</label>
-            <input type="text" id="actores" name="actores">
-            <label for="expmonth">Director</label>
-            <input type="text" id="director" name="director">
-            <label for="expmonth">Email administrador</label>
-            <input type="text" id="emailAdministrador" name="emailAdministrador">
-            <label for="expmonth">Género de la película</label>
-            <input type="text" id="tipoGenero" name="tipoGenero">
-
-            <div class="row">
-              
-            </div>
-          </div>
-
-        </div>
-        <input id="fservice" class="registerbtn" value="Enviar" type="button"></input> 
-      </form>
-    </div>
-  </div>
-
-</div>
-</div>
+<form action='' class='form'>
+  <p class='field required'>
+    <label class='label required'>idContenido</label>
+    <input class='text-input' id='idContenido' name='idContenido' required type='number'>
+  </p>
+  <p class='field required half'>
+    <label class='label'>URL Contenido</label>
+    <input class='text-input' id='urlContenido' name='urlContenido' required type='text'>
+  </p>
+  <p class='field required half'>
+    <label class='label'>Titulo</label>
+    <input class='text-input' id='titulo' name='titulo' type='text'>
+  </p>
+  <p class='field required half'>
+    <label class='label'>Resumen</label>
+    <input class='text-input' id='resumen' name='resumen' required type='text'>
+  </p>
+  <p class='field half required'>
+    <label class='label'>Idioma</label>
+    <input class='text-input' id='idioma' name='idioma' required type='text'>
+  </p>
+    <p class='field half required'>
+    <label class='label'>Subtitulos</label>
+    <input class='text-input' id='subtitulos' name='subtitulos' required type='text'>
+  </p>
+    <p class='field half required'>
+    <label class='label'>Actores</label>
+    <input class='text-input' id='actores' name='actores' required type='text'>
+  </p>
+    <p class='field half required'>
+    <label class='label'>Director</label>
+    <input class='text-input' id='director' name='director' required type='text'>
+  </p>
+    <p class='field half required'>
+    <label class='label'>Genero</label>
+    <input class='text-input' id='tipoGenero' name='tipoGenero' required type='text'>
+  </p>
+    <p class='field half required error'>
+    <label class='label'>Email administrador</label>
+    <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email'>
+  </p>
+  <p class='field half'>
+    <input id="fservice" class="send" value="Enviar" type="button"></input>
+  </p>
+</form>
   
   <!-- CIERRE HACER AQUI COSAS -->
   

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('./db/database.php');
 ?>
 
@@ -13,32 +14,46 @@ include('./db/database.php');
 </head>
 <style type="text/css">
   .row {
-  display: flex;
-  flex-wrap: wrap;
-}
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-.col {
-  flex: 1 0 18%;
-  margin: 5px;
-  background: #E50914;
-  height: 150px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
+  .col {
+    flex: 1 0 18%;
+    margin: 5px;
+    background: #E50914;
+    height: 150px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 </style>
 <body>
   <header>
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="./index.php" class="activo">Inicio</a>
-        <a href="series.php">Series</a>
+        <a href="index.php">Inicio</a>
+        <a href="series.php" class="activo">Series</a>
         <a href="peliculas.php">Películas</a>
-        <a href='milista.php'> Mi Lista </a> 
-       <!-- <a href='./cerrarsesion.php'>Cerrar sesión</a>  -->
+        
+        <?php
+          if(isset($_SESSION["logged"])) {
+            echo "<a href='milista.php'> Mi Lista </a>";  
+          }
+        ?>
+
+        <?php
+          if(!isset($_SESSION["logged"])) {
+            echo "<a href='./login.php'>Login</a>"; 
+          }
+          else{
+            echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
+          }
+        ?>
+        
       </nav>
     </div>
   </header>
