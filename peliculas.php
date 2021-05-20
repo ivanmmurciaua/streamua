@@ -77,9 +77,6 @@ include('./db/database.php');
 
                 echo "<div id='".$idContenido."'class='col'>";
                 echo "<a style='text-decoration:none; color:white;' href='./detalle.php?idContenido=$idContenido' onClick='window.open(this.href, this.target); return false;''>".$titulo;
-                /*if(isset($_SESSION['iniciado'])){
-                    echo "<span id='addmilista' style='cursor:pointer'>❤</span>";
-                }*/
                 echo "</a></div>";
             }
 

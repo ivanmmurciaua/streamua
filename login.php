@@ -87,10 +87,15 @@ session_start();
                 usu: gofre,
                 pwd: chocolate
               },
+        dataType:'json',
         success: function(data) {
-          if(data == "Sesión iniciada"){
+          if(data.iniciado == 1){
             alert("Sesión iniciada");
-            window.location.href = "/index.php";
+            if(data['tipoUsu'] == 1){
+              window.location.href = "./admin/listarContenido.php";  
+            }else{
+              window.location.href = "./index.php";
+            }
           }
           else{
             alert("Error con el usuario/contraseña");

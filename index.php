@@ -33,6 +33,14 @@ session_start();
 						echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
 					}
 				?>
+
+				<?php
+					if(!isset($_SESSION["admin"])) {
+					}
+					else{
+						echo "<a href='./admin/listarContenido.php'>Admin</a>";
+					}
+				?>
 				
 			</nav>
 		</div>
@@ -41,12 +49,14 @@ session_start();
 	<main>
 		<div class="pelicula-principal">
 			<div class="contenedor">
-				<h3 class="titulo">Interestellar</h3>
+				<br>
+				<br>
+				<h3 class="titulo">La casa de papel</h3>
 				<p class="descripcion">
-					Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.
+					Este documental analiza cómo y por qué "La casa de papel" ha logrado que el mundo entero apoye entusiasmado a una banda de ladrones y su líder.
 				</p>
-				<button role="button" class="boton"><i class="fas fa-play"></i>Reproducir</button>
-				<button role="button" class="boton"><i class="fas fa-info-circle"></i>Más información</button>
+				<button role="button" class="boton"><i class="fas fa-play"></i><a style="text-decoration: none; color:white;" href="./detalle.php?idContenido=5994">Reproducir</a></button>
+				<button role="button" class="boton"><i class="fas fa-info-circle"></i><a style="text-decoration: none; color:white;" href="https://www.netflix.com/es/title/81098822">Más información</a></button>
 			</div>
 		</div>
 

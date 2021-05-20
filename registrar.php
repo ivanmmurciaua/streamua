@@ -124,7 +124,7 @@ $(document).ready(function() {
       data: {nombre:nombre, ap1:ap1, ap2:ap2, tiposusc:tiposusc, idioma:idioma, email:email, password:password},
       success: function(data) {
         alert(data);
-        window.location.reload();
+        window.location.href = "/login.php";
       }
     });
   });

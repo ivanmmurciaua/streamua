@@ -29,11 +29,26 @@ if(strcmp($ecn, $encc) == 0){
 	if($_SESSION['logged'] = $id) {
 		$_SESSION['emailusu'] = $usuario;
 		$_SESSION['iniciado'] = 1;
-		echo "Sesión iniciada";
+		$data["iniciado"] = 1;
 	}
+
+	$resultado3 = mysqli_query($conn,"SELECT tipoUsuario('$usuario') AS 'tipoUsu'");
+	while ($fila3 = $resultado3->fetch_assoc()) {
+		$tipoUsuario = $fila3['tipoUsu'];
+	}
+
+	if($tipoUsuario== 1){
+		$_SESSION['admin'] = 1;
+	}
+
+	$data["tipoUsu"] = $tipoUsuario;
+	
 }
 else{
+	$data["iniciado"] = 0;
 	echo "Error con el usuario/contraseña";
 }
+
+echo json_encode($data);
 
 ?>

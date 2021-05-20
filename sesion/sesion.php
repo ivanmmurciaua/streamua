@@ -32,5 +32,17 @@ else{
 	echo "no funca mike";
 }
 
+?>
 
+<form enctype="multipart/form-data" action="guardar_archivo.php" method="post">
+Descripción <input type="text" name="titulo" size="30">
+Caratula <input type="file" name="archivito">
+<input type="submit" value="Enviar archivo">
+</form>
+
+<?php
+$sql = "SELECT * FROM Contenido WHERE idContenido = 1845";
+$sth = $conn->query($sql);
+$result=mysqli_fetch_array($sth);
+echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['imagenPortada'] ).'"/>';
 ?>

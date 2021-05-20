@@ -70,7 +70,12 @@ include('./db/database.php');
 
             /* obtener un array asociativo */
             while ($fila = $resultado->fetch_assoc()) {
-                echo "<div class='col'>".$fila["titulo"]."</div>";
+                $idContenido = $fila["idContenido"];
+                $titulo = $fila["titulo"];
+
+                echo "<div id='".$idContenido."'class='col'>";
+                echo "<a style='text-decoration:none; color:white;' href='./detalle.php?idContenido=$idContenido' onClick='window.open(this.href, this.target); return false;''>".$titulo;
+                echo "</a></div>";
             }
 
             /* liberar el conjunto de resultados */

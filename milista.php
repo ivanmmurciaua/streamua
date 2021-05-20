@@ -66,13 +66,18 @@ $emailcliente = $_SESSION['emailusu'];
     <div id="contenedor_peliculas">
       <div class="row">
         <?php
-          $qry = "SELECT titulo FROM Contenido WHERE idContenido IN (SELECT idContenido FROM Lista WHERE emailCliente LIKE '$emailcliente')";
+          $qry = "SELECT idContenido,titulo FROM Contenido WHERE idContenido IN (SELECT idContenido FROM Lista WHERE emailCliente LIKE '$emailcliente')";
 
-          if ($resultado = $conn->query($qry)) {
+           if ($resultado = $conn->query($qry)) {
 
               /* obtener un array asociativo */
               while ($fila = $resultado->fetch_assoc()) {
-                  echo "<div class='col'>".$fila["titulo"]."</div>";
+                  $idContenido = $fila["idContenido"];
+                  $titulo = $fila["titulo"];
+
+                  echo "<div id='".$idContenido."'class='col'>";
+                  echo "<a style='text-decoration:none; color:white;' href='./detalle.php?idContenido=$idContenido' onClick='window.open(this.href, this.target); return false;''>".$titulo;
+                  echo "</a></div>";
               }
 
               /* liberar el conjunto de resultados */

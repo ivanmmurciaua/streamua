@@ -7,6 +7,7 @@ include('./db/database.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/detalle.css">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
   <title>StreamUA</title>
@@ -17,7 +18,7 @@ include('./db/database.php');
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
         <a href="index.php">Inicio</a>
-        <a href="series.php" class="activo">Series</a>
+        <a href="series.php">Series</a>
         <a href="peliculas.php">Películas</a>
         
         <?php
@@ -38,27 +39,29 @@ include('./db/database.php');
       </nav>
     </div>
   </header>
+  <body>
   <?php
-        $idContenido = $_GET['idContenido'];
-        $qry = "SELECT * FROM Contenido WHERE idContenido=$idContenido";
-        if ($resultado = $conn->query($qry)) {
-          while ($fila = $resultado->fetch_assoc()) {
-            $imagenPortada = ""; //KJSDFJALÑSJDFLAKDSJFLÑAKDJFLÑKAJSDÑLJKFASDLF
-            $titulo = $fila['titulo'];
-            $resumen = $fila['resumen'];
-            $pais = $fila['idioma'];
-            $director = $fila['director'];
-            $genero = $fila['tipoGenero'];
-            $actores = $fila['actores'];
-            $puntuacionMedia = $fila['puntuacionMedia'];
-          }
-        }
 
+    if(isset($_GET['idContenido'])){
+      $idContenido = $_GET['idContenido'];
+      $qry = "SELECT * FROM Contenido WHERE idContenido=$idContenido";
+      if ($resultado = $conn->query($qry)) {
+        while ($fila = $resultado->fetch_assoc()) {
+          $imagenPortada = $fila['imagenPortada'];
+          $titulo = $fila['titulo'];
+          $resumen = $fila['resumen'];
+          $pais = $fila['idioma'];
+          $director = $fila['director'];
+          $genero = $fila['tipoGenero'];
+          $actores = $fila['actores'];
+          $puntuacionMedia = $fila['puntuacionMedia'];
+        }
+      }
   ?>
 
-<div class='card'>
+  <div class='card'>
   <div class='card_left'>
-    <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/343086/h8fnwL1.png'>
+    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $imagenPortada ).'"/>'; ?>
   </div>
   <div class='card_right'>
     <h1><?php echo $titulo; ?></h1>
@@ -120,10 +123,94 @@ include('./db/database.php');
         <!-- <a href='http://www.imdb.com/title/tt0266697/plotsummary?ref_=tt_stry_pl' target='_blank'>Leer más</a> -->
       </div>
       <div class='card_right__button'>
-        <a href='' target='_blank'>REPRODUCIR</a>
+        <a id="repro">REPRODUCIR</a>
       </div>
+      <?php
+        if(isset($_SESSION["logged"])) { ?>
+          <div id="anyadir_div" class='card_left__button'>
+            <a id="anyadir">AÑADIR A MI LISTA</a>
+          </div>    
+      <?php  
+        }
+      ?>
+      
     </div>
   </div>
 </div>
-</body>
-</html>
+<?php
+
+    }
+    else{
+      echo "<div class='card'>
+              <div class='card_right'>
+              <h1>No tan rápido!</h1>
+              <br>
+              <h1>Selecciona un contenido a visualizar</h1>
+              </div>
+            </div>";
+    }
+
+?>
+
+  </body>
+
+  <script type="text/javascript">
+    
+    $(document).ready(function() {
+
+      var idContenido = <?php echo $idContenido ?>;
+      var emailcliente = <?php echo json_encode($_SESSION["emailusu"]); ?>;
+
+      if(emailcliente!=""){
+        $.ajax({
+          type: 'POST',
+          url: 'admin/checkIfList.php',
+          data: {idContenido:idContenido, emailcliente:emailcliente},
+          success: function(data) {
+            if(data==2){
+              var div = document.getElementById('anyadir_div')
+              if(div !== null){
+                  while (div.hasChildNodes()){
+                      div.removeChild(div.lastChild);
+                  }
+              }
+            }
+          }
+        });
+      }
+
+      $('#repro').on('click', function(){
+        <?php 
+          if(!isset($_SESSION["logged"])) {
+        ?>
+            window.location.href = "/login.php";
+        <?php
+        } else{
+        ?>
+            window.alert("En construcción :)");
+        <?php
+        }
+        ?>
+      });
+
+      $('#anyadir').on('click', function(){
+        
+        var idContenido = <?php echo $idContenido ?>;
+        var emailcliente = <?php echo json_encode($_SESSION["emailusu"]); ?>;
+
+        $.ajax({
+          type: 'POST',
+          url: 'admin/anyadirMiLista.php',
+          data: {idContenido:idContenido, emailcliente:emailcliente},
+          success: function(data) {
+            alert(data);
+            window.location.reload();
+          }
+        });
+
+      });
+
+    });
+
+  </script>
+  </html>

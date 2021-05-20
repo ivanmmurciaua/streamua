@@ -76,6 +76,18 @@
     <input id="fservice" class="button" value="Enviar" type="button"></input>
   </p>
 </form>
+
+<form enctype="multipart/form-data" action="./cruds/anyadirPortada.php" method="post">
+  <p>
+    <label class='label'>idContenido</label>
+    <input type="number" name="idContenido" size="10">
+  </p>
+  <p>
+    <label class='label'>Caratula</label>
+    <input type="file" name="archivito">
+  </p>
+  <input type="submit" value="Subir portada">
+</form>
   
   <!-- CIERRE HACER AQUI COSAS -->
   
