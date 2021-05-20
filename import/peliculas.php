@@ -17,7 +17,7 @@ else{
   $conn->set_charset("utf8");
 }
 
-$ficherocsv = "netflix_titles2.csv";
+$ficherocsv = "netflix_titles.csv";
 
 // Leemos el fichero de peliculas
 

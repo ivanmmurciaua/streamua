@@ -38,7 +38,7 @@ session_start();
       <a href="">Login</a>
       <hr>
       <br>
-      <input id="Usuario" type="text" placeholder="Usuario">
+      <input id="Usuario" type="text" placeholder="Email">
       <br>
       <input id="Contrasena" type="password" placeholder="Contraseña">
       <br>
@@ -47,7 +47,7 @@ session_start();
   </div>
   <div class="call-text">
     <h1>Únete a la mayor plataforma multimedia</h1>
-    <button>Registrarme</button>
+    <button><a style="text-decoration: none; color:white" href="./registrar.php">Registrarme</a></button>
     &nbsp&nbsp&nbsp<button><a style="text-decoration: none; color:white" href="./index.php">Volver a inicio</a></button>
   </div>
   </div>
@@ -88,7 +88,13 @@ session_start();
                 pwd: chocolate
               },
         success: function(data) {
-          alert(data);
+          if(data == "Sesión iniciada"){
+            alert("Sesión iniciada");
+            window.location.href = "/index.php";
+          }
+          else{
+            alert("Error con el usuario/contraseña");
+          }
         }
       });
 

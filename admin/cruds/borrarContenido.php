@@ -5,6 +5,7 @@
 include('../../db/database.php');
 
 $idContenido = $_POST['idContenido'];
+$titulo = $_POST['titulo'];
 
 
 $qry = "DELETE from Contenido where idContenido = $idContenido";

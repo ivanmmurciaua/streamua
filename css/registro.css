@@ -1,0 +1,181 @@
+:root {
+  --rojo: #E50914;
+  --fondo: #141414;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: #141414;
+}
+
+.contenedor {
+  width: 90%;
+  margin: auto;
+}
+
+header {
+  padding: 30px 0;
+}
+
+header .contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logotipo {
+  font-family: 'Bebas Neue', cursive;
+  font-weight: normal;
+  color: var(--rojo);
+  font-size: 40px;
+}
+
+header nav a {
+  color: #AAA;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+header nav a:hover,
+header nav a.activo {
+  color: #FFF;
+}
+
+.wrapper {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  margin: 3% auto;
+  box-shadow: 0px 0px 70px 7px #9D9D9D;
+  overflow: hidden;
+}
+
+.login-text {
+  width: 800px;
+  height: 450px;
+  background: linear-gradient(to left, #E50914, #590508);
+  position: absolute;
+  top: -300px;
+  box-sizing: border-box;
+  padding: 6%;
+  transition: all 0.5s ease-in-out;
+  z-index: 11;
+}
+
+.text {
+  margin-left: 20px;
+  color: #fff;
+  display: none;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 0.3s;
+}
+.text a, .text a:visited {
+  font-size: 36px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+.text hr {
+  width: 10%;
+  float: left;
+  background-color: #fff;
+  font-size: 16px;
+}
+.text input {
+  margin-top: 30px;
+  height: 40px;
+  width: 300px;
+  border-radius: 2px;
+  border: none;
+  background-color: #fff;
+  opacity: 0.6;
+  outline: none;
+  color: #000;
+  padding-left: 10px;
+}
+.text input[type=text] {
+  margin-top: 60px;
+}
+.text button {
+  margin-top: 60px;
+  height: 40px;
+  width: 140px;
+  outline: none;
+}
+.text .login-btn {
+  background: #fff;
+  border: none;
+  border-radius: 2px;
+  color: #696a86;
+}
+.text .signup-btn {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  color: #fff;
+  margin-left: 30px;
+}
+
+.cta {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #696a86;
+  border: 2px solid #fff;
+  position: absolute;
+  bottom: -30px;
+  left: 370px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  z-index: 11;
+}
+
+.call-text {
+  background-color: #141414;
+  width: 800px;
+  height: 450px;
+  bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+.call-text h1 {
+  font-size: 42px;
+  margin-top: 10%;
+  color: #ffffff;
+}
+.call-text h1 span {
+  color: #333;
+  font-weight: bolder;
+}
+.call-text button {
+  height: 40px;
+  width: 180px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(to left, #E50914, #590508);
+  color: #fff;
+  font-weight: bolder;
+  margin-top: 30px;
+  cursor: pointer;
+  outline: none;
+}
+
+.show-hide {
+  display: block;
+}
+
+.expand {
+  transform: translateY(300px);
+}
+
+.label{
+  color:white;
+}

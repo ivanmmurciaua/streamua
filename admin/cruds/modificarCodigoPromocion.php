@@ -2,11 +2,11 @@
 
 include('../../db/database.php');
 
+$codProm = $_POST['codProm'];
 $fechaExpiracion = $_POST['fechaExpiracion'];
 $descuento = $_POST['descuento'];
-$emailAdministrador = $_POST['emailAdministrador'];
 
-$qry = "UPDATE CodigoPromocion SET fechaExpiracion='$fechaExpiracion', descuento=$descuento, emailAdministrador='$emailAdministrador')";
+$qry = "UPDATE CodigoPromocion SET fechaExpiracion='$fechaExpiracion', descuento=$descuento WHERE codProm = '$codProm'";
 
 if(!mysqli_query($conn,$qry)) {
 	echo  $conn->error;

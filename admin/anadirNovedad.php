@@ -15,30 +15,16 @@
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-
         <a href="#" class="activo">Inicio</a>
-        <a href="#">Mi lista</a>
+        <a href="anadirContenido.php">Añadir Contenido</a>
+        <a href="listarContenido.php">Listar Contenido</a>
+        <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
+        <a href="listarContenido.php">Listar Codigo promocion</a>
+        <a href="anadirNovedad.php">Añadir Novedad</a>
+        <a href="listarNovedades.php">Listar Novedades</a>
       </nav>
     </div>
   </header>
-
-  <!-- HACER AQUI COSAS -->
-  <!--Titulo
-    <input type="text" id="titulo" name="titulo">
-  <br><br><br>
-  Descripcion
-    <input type="text" id="descripcion" name="descripcion">
-  <br><br><br>
-  Fecha salida
-    <input type="date" id="fechaSalida" name="fechaSalida">
-  <br><br><br>
-
-    emailAdministrador
-    <input type="text" id="emailAdministrador" name="emailAdministrador">
-  <br><br><br>
-
-  <input id="fservice" class="send" value="Enviar" type="button"></input> 
--->
 
   <form action='' class='form'>
   <p class='field required'>
@@ -53,12 +39,12 @@
     <label class='label'>Fecha Salida</label>
     <input class='text-input' id='fechaSalida' name='fechaSalida' type='date'>
   </p>
-  <p class='field required half'>
+  <p class='field required half error'>
     <label class='label'>emailAdministrador</label>
     <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email'>
   </p>
   <p class='field half'>
-    <input id="fservice" class="send" value="Enviar" type="button"></input>
+    <input id="fservice" class="button" value="Enviar" type="button"></input>
   </p>
 </form>
   
@@ -85,18 +71,5 @@ $(document).ready(function() {
   });
 });
 </script>
-
-<!-- Footer -->
-<footer class="bg-light text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4">
-
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    GI 2020/21
-    <a class="text-dark" href="http://streamua.ddnsking.com/">StreamUA</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
 
 </html>

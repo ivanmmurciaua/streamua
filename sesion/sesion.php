@@ -14,7 +14,7 @@ while ($fila = $resultado->fetch_assoc()) {
 
 echo "<br />";
 
-$usuario = 'chocolate@gmail.com';
+$usuario = 'b@gmail.com';
 
 $resultado2 = mysqli_query($conn,"SELECT AES_DECRYPT(AES_ENCRYPT(Usuario.password,'1234'),'1234') AS 'original' FROM Usuario WHERE Usuario.email LIKE '$usuario'");
 

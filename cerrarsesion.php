@@ -5,6 +5,7 @@ session_start();
 
 // Cerrar sesión
 unset($_SESSION["logged"]);
+unset($_SESSION['iniciado']);
 
 ?>
 <!DOCTYPE html>

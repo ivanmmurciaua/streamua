@@ -15,27 +15,16 @@
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-
         <a href="#" class="activo">Inicio</a>
-        <a href="#">Mi lista</a>
+        <a href="anadirContenido.php">Añadir Contenido</a>
+        <a href="listarContenido.php">Listar Contenido</a>
+        <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
+        <a href="listarContenido.php">Listar Codigo promocion</a>
+        <a href="anadirNovedad.php">Añadir Novedad</a>
+        <a href="listarNovedades.php">Listar Novedades</a>
       </nav>
     </div>
   </header>
-
-  <!-- HACER AQUI COSAS -->
-  <!--  Fecha expiracion
-    <input type="date" id="fechaExpiracion" name="fechaExpiracion">
-  <br><br><br>
-  	Descuento (%)
-    <input type="number" id="descuento" name="descuento">
-  <br><br><br>
-    emailAdministrador
-    <input type="text" id="emailAdministrador" name="emailAdministrador">
-  <br><br><br>
-
-  <input id="fservice" class="send" value="Enviar" type="button"></input> 
--->
-  <!-- Prueba -->
 
 <form action='' class='form'>
   <p class='field required'>
@@ -46,20 +35,15 @@
     <label class='label' for='email'>Descuento (%)</label>
     <input class='text-input' id='descuento' name='descuento' required type='number'>
   </p>
-  <p class='field half'>
+  <p class='field half error'>
     <label class='label' for='phone'>emailAdministrador</label>
     <input class='text-input' id='emailAdministrador' name='emailAdministrador' type='text'>
   </p>
   
   <p class='field half'>
-    <input id="fservice" class="send" value="Enviar" type="button"></input>
+    <input id="fservice" class="button " value="Enviar" type="button"></input>
   </p>
 </form>
-
-
-
-
-
 
 </body>
 

@@ -17,11 +17,16 @@
       <nav>
 
         <a href="#" class="activo">Inicio</a>
-        <a href="series.php">Series</a>
-        <a href="peliculas.php">Películas</a>
+        <a href="anadirContenido.php">Añadir Contenido</a>
+        <a href="listarContenido.php">Listar Contenido</a>
+        <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
+        <a href="listarContenido.php">Listar Codigo promocion</a>
+        <a href="anadirNovedad.php">Añadir Novedad</a>
+        <a href="listarNovedades.php">Listar Novedades</a>
       </nav>
     </div>
   </header>
+
 
 
   <!-- HACER AQUI COSAS -->
@@ -68,7 +73,7 @@
     <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email'>
   </p>
   <p class='field half'>
-    <input id="fservice" class="send" value="Enviar" type="button"></input>
+    <input id="fservice" class="button" value="Enviar" type="button"></input>
   </p>
 </form>
   

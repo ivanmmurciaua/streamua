@@ -11,6 +11,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/estilosIndex.css">
+  <link rel="stylesheet" href="../css/listNovedades.css">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
   <title>StreamUA</title>
 </head>
@@ -20,28 +21,32 @@
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="#" class="activo">Inicio</a>
+        <a href="../index.php">Inicio</a>
+        <a href="anadirContenido.php">Añadir Contenido</a>
+        <a href="listarContenido.php">Listar Contenido</a>
+        <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
+        <a href="listarContenido.php" class="activo">Listar Codigo promocion</a>
+        <a href="anadirNovedad.php">Añadir Novedad</a>
+        <a href="listarNovedades.php">Listar Novedades</a>
       </nav>
     </div>
   </header>
 
-  <!-- HACER AQUI COSAS -->
+  <!-- HACER AQUI COSAS --
+
 
 <!-- Listado Visitas -->
     <section id="alumnos">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Listado códigos promocion</h2>
-          </div>
-        </div>
+        <br>
+        <br>
         <div class="row">
          <div class="col-lg-12">
            <form id="apuntate" name="apuntate" method="POST">
              <div class="row">
                <div class="col-md-12">
                   <div class="form-group">
-                  <table class="table table-striped">
+                  <table class="table table-striped" id="tabla">
                   <thead>
                       <tr>
                           <th>Codigo Promocion (codProm)</th>
@@ -49,6 +54,7 @@
                           <th>Fecha expiracion</th>
                           <th>Activo</th>
                           <th>Descuento</th>
+                          <th>Email Administrador</th>
                           
                       </tr>
                   </thead>
@@ -67,9 +73,14 @@
                                ?>
                              
                       <tr>
-                          <td><?php echo utf8_encode($codProm)."(".$fechaCreacion."-".$fechaExpiracion."-".$activo."-".$descuento."-".$emailAdministrador.")"?></td>
-                          <td><a href='modificarCodigoPromocion.php?email=<?=$email?>' target="popup" onClick="window.open(this.href, this.target, 'width=400,height=820'); return false;"><img src="img/iconoEditar.jpg" alt="Editar Novedad"></a></td>
-                          <td><a href='eliminarCodigoPromocion.php?email=<?=$email?>' target="popup" onClick="window.open(this.href, this.target, 'width=350,height=320'); return false;"><img src="img/iconoBorrar.jpg" alt="Borrar Novedad"></a></td>
+                          <td><?php echo utf8_encode($codProm)?></td>
+                          <td><?php echo utf8_encode($fechaCreacion)?></td>
+                          <td><?php echo utf8_encode($fechaExpiracion)?></td>
+                          <td><?php echo utf8_encode($activo)?></td>
+                          <td><?php echo utf8_encode($descuento)?></td>
+                          <td><?php echo utf8_encode($emailAdministrador)?></td>
+                          <td><a href='modificarCodigoPromocion.php?codProm=<?=$codProm?>&fechaExpiracion=<?=$fechaExpiracion?>&descuento=<?=$descuento?>&emailAdministrador=<?=$emailAdministrador?>' target="popup" onClick="window.open(this.href, this.target, 'width=400,height=820'); return false;"><img src="../img/iconoEditar.jpg" alt="Editar CodigoPromocion"></a></td>
+                          <td><a href='borrarCodigoPromocion.php?codProm=<?=$codProm?>' target="popup" onClick="window.open(this.href, this.target, 'width=350,height=320'); return false;"><img src="../img/iconoBorrar.jpg" alt="Borrar CodigoPromocion"></a></td>
                      
                       </tr>
                       <?php
@@ -90,18 +101,4 @@
   <!-- CIERRE HACER AQUI COSAS -->
   
 </body>
-
-<!-- Footer -->
-<footer class="bg-light text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4">
-
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    GI 2020/21
-    <a class="text-dark" href="http://streamua.ddnsking.com/">StreamUA</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
-
 </html>

@@ -1,0 +1,25 @@
+#tabla {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+}
+
+#tabla td, #tabla th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tabla tr{background-color: #AEA9A9;}
+
+#tabla tr:nth-child(even){background-color: #837E7E;}
+
+#tabla tr:hover {background-color: #B0B0B0; color: white}
+
+#tabla th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #E30202;
+  color: white;
+}
