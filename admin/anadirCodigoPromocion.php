@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,7 +40,7 @@
   </p>
   <p class='field half error'>
     <label class='label' for='phone'>emailAdministrador</label>
-    <input class='text-input' id='emailAdministrador' name='emailAdministrador' type='text'>
+    <input class='text-input' id='emailAdministrador' name='emailAdministrador' type='text' value="<?=utf8_encode($_SESSION['emailusu'])?>" readonly="">
   </p>
   
   <p class='field half'>

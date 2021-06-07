@@ -2,7 +2,6 @@
 
 include('../../db/database.php');
 
-$idContenido = $_POST['idContenido'];
 $urlContenido = $_POST['urlContenido'];
 $titulo = $_POST['titulo'];
 $resumen = $_POST['resumen'];
@@ -13,7 +12,7 @@ $director = $_POST['director'];
 $emailAdministrador = $_POST['emailAdministrador'];
 $tipoGenero = $_POST['tipoGenero'];
 
-$qry = "call anadirContenido($idContenido,'$urlContenido','$titulo','$resumen','$idioma','$subtitulos','$actores','$director','$emailAdministrador','$tipoGenero')";
+$qry = "call anadirContenido('$urlContenido','$titulo','$resumen','$idioma','$subtitulos','$actores','$director','$emailAdministrador','$tipoGenero')";
 
 if(!mysqli_query($conn,$qry)) {
 	echo  $conn->error;

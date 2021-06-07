@@ -40,6 +40,8 @@ include('./db/database.php');
     </div>
   </header>
   <body>
+    <input type="hidden" class='text-input' id='emailCliente' name='emailCliente' required type='email' value="<?=utf8_encode($_SESSION['emailusu'])?>" readonly="">
+ 
   <?php
 
     if(isset($_GET['idContenido'])){
@@ -71,52 +73,7 @@ include('./db/database.php');
         <li>Director: <?php echo $director; ?></li>
         <li>Género: <?php echo $genero; ?></li>
       </ul>
-      <div class='card_right__rating'>
-        <div class='card_right__rating__stars'>
-          <fieldset class='rating'>
-            <input id='star10' name='rating' type='radio' value='10'>
-            <label class='full' for='star10' title='10 stars'></label>
-            <input id='star9half' name='rating' type='radio' value='9 and a half'>
-            <label class='half' for='star9half' title='9.5 stars'></label>
-            <input id='star9' name='rating' type='radio' value='9'>
-            <label class='full' for='star9' title='9 stars'></label>
-            <input id='star8half' name='rating' type='radio' value='8 and a half'>
-            <label class='half' for='star8half' title='8.5 stars'></label>
-            <input id='star8' name='rating' type='radio' value='8'>
-            <label class='full' for='star8' title='8 stars'></label>
-            <input id='star7half' name='rating' type='radio' value='7 and a half'>
-            <label class='half' for='star7half' title='7.5 stars'></label>
-            <input id='star7' name='rating' type='radio' value='7'>
-            <label class='full' for='star7' title='7 stars'></label>
-            <input id='star6half' name='rating' type='radio' value='6 and a half'>
-            <label class='half' for='star6half' title='6.5 stars'></label>
-            <input id='star6' name='rating' type='radio' value='6'>
-            <label class='full' for='star6' title='6 star'></label>
-            <input id='star5half' name='rating' type='radio' value='5 and a half'>
-            <label class='half' for='star5half' title='5.5 stars'></label>
-            <input id='star5' name='rating' type='radio' value='5'>
-            <label class='full' for='star5' title='5 stars'></label>
-            <input id='star4half' name='rating' type='radio' value='4 and a half'>
-            <label class='half' for='star4half' title='4.5 stars'></label>
-            <input id='star4' name='rating' type='radio' value='4'>
-            <label class='full' for='star4' title='4 stars'></label>
-            <input id='star3half' name='rating' type='radio' value='3 and a half'>
-            <label class='half' for='star3half' title='3.5 stars'></label>
-            <input id='star3' name='rating' type='radio' value='3'>
-            <label class='full' for='star3' title='3 stars'></label>
-            <input id='star2half' name='rating' type='radio' value='2 and a half'>
-            <label class='half' for='star2half' title='2.5 stars'></label>
-            <input id='star2' name='rating' type='radio' value='2'>
-            <label class='full' for='star2' title='2 stars'></label>
-            <input id='star1half' name='rating' type='radio' value='1 and a half'>
-            <label class='half' for='star1half' title='1.5 stars'></label>
-            <input id='star1' name='rating' type='radio' value='1'>
-            <label class='full' for='star1' title='1 star'></label>
-            <input id='starhalf' name='rating' type='radio' value='half'>
-            <label class='half' for='starhalf' title='0.5 stars'></label>
-          </fieldset>
-        </div>
-      </div>
+
       <div class='card_right__review'>
         <p>Descripción</p>
         <p> <?php echo $resumen; ?> </p>
@@ -127,13 +84,29 @@ include('./db/database.php');
       </div>
       <?php
         if(isset($_SESSION["logged"])) { ?>
+          
           <div id="anyadir_div" class='card_left__button'>
             <a id="anyadir">AÑADIR A MI LISTA</a>
+
           </div>    
       <?php  
         }
       ?>
-      
+      <div class='card_right__button'>
+
+            <select  id="valoracion">
+              <option id="1" name="1">1</option>
+              <option id="2" name="2">2</option>
+              <option id="3" name="3">3</option>
+              <option id="4" name="4">4</option>
+              <option id="5" name="5">5</option>
+            </select>
+
+            
+            <div id="anyadir_div" class='card_left__button'>
+            <a id="valoración">VALORACION</a>
+          </div>  
+      </div>
     </div>
   </div>
 </div>
@@ -159,7 +132,7 @@ include('./db/database.php');
     $(document).ready(function() {
 
       var idContenido = <?php echo $idContenido ?>;
-      var emailcliente = <?php echo json_encode($_SESSION["emailusu"]); ?>;
+      var emailcliente = document.getElementById('emailCliente').value;
 
       if(emailcliente!=""){
         $.ajax({
@@ -196,12 +169,30 @@ include('./db/database.php');
       $('#anyadir').on('click', function(){
         
         var idContenido = <?php echo $idContenido ?>;
-        var emailcliente = <?php echo json_encode($_SESSION["emailusu"]); ?>;
+        var emailcliente = document.getElementById('emailCliente').value;
 
         $.ajax({
           type: 'POST',
           url: 'admin/anyadirMiLista.php',
           data: {idContenido:idContenido, emailcliente:emailcliente},
+          success: function(data) {
+            alert(data);
+            window.location.reload();
+          }
+        });
+
+      });
+
+      $('#valoración').on('click', function(){
+        
+        var idContenido = <?php echo $idContenido ?>;
+        var valoracion = document.getElementById('valoracion').value;
+        var emailCliente = document.getElementById('emailCliente').value;
+
+        $.ajax({
+          type: 'POST',
+          url: 'detalleBD.php',
+          data: {valoracion:valoracion, emailCliente:emailCliente,idContenido:idContenido},
           success: function(data) {
             alert(data);
             window.location.reload();

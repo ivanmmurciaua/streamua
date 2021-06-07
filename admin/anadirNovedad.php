@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -41,7 +44,7 @@
   </p>
   <p class='field required half error'>
     <label class='label'>emailAdministrador</label>
-    <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email'>
+    <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email' value="<?=utf8_encode($_SESSION['emailusu'])?>" readonly="">
   </p>
   <p class='field half'>
     <input id="fservice" class="button" value="Enviar" type="button"></input>

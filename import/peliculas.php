@@ -77,7 +77,7 @@ if (($fichy = fopen($ficherocsv, "r")) !== FALSE) {
 
       if($result1){
         echo "------------------------------------------ <br />";
-        echo "<h1><b>FUNCA MIKE</b></h1>";
+        echo "<h1><b>Registro insertado</b></h1>";
         echo "------------------------------------------ <br />";
       }
       else{

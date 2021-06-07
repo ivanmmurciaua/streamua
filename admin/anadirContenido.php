@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+  $email = $_SESSION['emailusu'];
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,14 +34,9 @@
   </header>
 
 
-
   <!-- HACER AQUI COSAS -->
 
 <form action='' class='form'>
-  <p class='field required'>
-    <label class='label required'>idContenido</label>
-    <input class='text-input' id='idContenido' name='idContenido' required type='number'>
-  </p>
   <p class='field required half'>
     <label class='label'>URL Contenido</label>
     <input class='text-input' id='urlContenido' name='urlContenido' required type='text'>
@@ -70,7 +71,7 @@
   </p>
     <p class='field half required error'>
     <label class='label'>Email administrador</label>
-    <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email'>
+    <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email' value="<?=utf8_encode($_SESSION['emailusu'])?>" readonly="">
   </p>
   <p class='field half'>
     <input id="fservice" class="button" value="Enviar" type="button"></input>
@@ -96,7 +97,6 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('#fservice').on('click', function(){
-    var idContenido = document.getElementById('idContenido').value;
     var urlContenido = document.getElementById('urlContenido').value;
     var titulo = document.getElementById('titulo').value;
     var resumen = document.getElementById('resumen').value;
@@ -104,12 +104,12 @@ $(document).ready(function() {
     var subtitulos = document.getElementById('subtitulos').value;
     var actores = document.getElementById('actores').value;
     var director = document.getElementById('director').value;
-    var emailAdministrador = document.getElementById('emailAdministrador').value;
+    var emailAdministrador = document.getElementById('emailAdministrador').value;;
     var tipoGenero = document.getElementById('tipoGenero').value;
     $.ajax({
       type: 'POST',
       url: 'cruds/anadirContenido.php',
-      data: {idContenido:idContenido, urlContenido:urlContenido, titulo:titulo, resumen:resumen, idioma:idioma, subtitulos:subtitulos, actores:actores, director:director, emailAdministrador:emailAdministrador, tipoGenero:tipoGenero},
+      data: {urlContenido:urlContenido, titulo:titulo, resumen:resumen, idioma:idioma, subtitulos:subtitulos, actores:actores, director:director, emailAdministrador:emailAdministrador, tipoGenero:tipoGenero},
       success: function(data) {
         alert(data);
         window.location.reload();
