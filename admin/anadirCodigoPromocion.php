@@ -18,11 +18,12 @@ session_start();
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="#" class="activo">Inicio</a>
+        <a href="../index.php">Inicio</a>
         <a href="anadirContenido.php">Añadir Contenido</a>
         <a href="listarContenido.php">Listar Contenido</a>
-        <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
-        <a href="listarContenido.php">Listar Codigo promocion</a>
+        <a href="#" class="activo">Añadir Codigo promocion</a>
+        <a href="anadirCaratula.php">Añadir Caratula</a>
+        <a href="listarCodigoPromocion.php">Listar Codigo promocion</a>
         <a href="anadirNovedad.php">Añadir Novedad</a>
         <a href="listarNovedades.php">Listar Novedades</a>
       </nav>
@@ -56,15 +57,19 @@ $(document).ready(function() {
     var fechaExpiracion = document.getElementById('fechaExpiracion').value;
     var descuento = document.getElementById('descuento').value;
     var emailAdministrador = document.getElementById('emailAdministrador').value;
-    $.ajax({
-      type: 'POST',
-      url: 'cruds/anadirCodigoPromocion.php',
-      data: {fechaExpiracion:fechaExpiracion, descuento:descuento, emailAdministrador:emailAdministrador},
-      success: function(data) {
-        alert(data);
-        window.location.reload();
-      }
-    });
+
+    if(fechaExpiracion != "" & descuento != "" & emailAdministrador != "") {
+
+      $.ajax({
+        type: 'POST',
+        url: 'cruds/anadirCodigoPromocion.php',
+        data: {fechaExpiracion:fechaExpiracion, descuento:descuento, emailAdministrador:emailAdministrador},
+        success: function(data) {
+          alert(data);
+          window.location.reload();
+        }
+      });
+    }
   });
 });
 </script>

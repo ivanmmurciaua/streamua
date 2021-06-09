@@ -23,8 +23,9 @@
       <nav>
         <a href="../index.php">Inicio</a>
         <a href="anadirContenido.php">Añadir Contenido</a>
-        <a href="listarContenido.php" class="activo">Listar Contenido</a>
+        <a href="#" class="activo">Listar Contenido</a>
         <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
+        <a href="anadirCaratula.php">Añadir Caratula</a>
         <a href="listarCodigoPromocion.php">Listar Codigo promocion</a>
         <a href="anadirNovedad.php">Añadir Novedad</a>
         <a href="listarNovedades.php">Listar Novedades</a>

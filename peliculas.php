@@ -29,9 +29,15 @@ include('./db/database.php');
     align-items: center;
     justify-content: center;
   }
+  #buscador{
+    width: 500px;
+    height: 30px;
+    border-radius: 10px;
+  }
 }
 
 </style>
+
 <body>
   <header>
     <div class="contenedor">
@@ -61,12 +67,19 @@ include('./db/database.php');
   </header>
   <div class="contenedor-titulo-controles">
     <h3>Películas</h3>
-    <div class="indicadores"></div>
+    <div class="indicadores"></div><input type="search" placeholder="   Escribe la pelicula a buscar y dale a intro" id="buscador" />
   </div>
   <div id="contenedor_peliculas">
     <div class="row">
       <?php
-        $qry = "SELECT * FROM Contenido WHERE idContenido IN (SELECT idContenido FROM Pelicula)";
+        if(isset($_GET['buscar'])){
+          $srch = "AND titulo LIKE '%".$_GET['buscar']."%'";  
+        }
+        else{
+          $srch = "";
+        }
+        
+        $qry = "SELECT * FROM Contenido WHERE idContenido IN (SELECT idContenido FROM Pelicula) $srch";
 
         if ($resultado = $conn->query($qry)) {
 
@@ -88,5 +101,19 @@ include('./db/database.php');
     </div>    
   </div>
 </body>
-
+<script type="text/javascript">
+  //ENTER SOBRE LA CASILLA
+  $('#buscador').keypress(function(e){
+    if(e.which == 13){
+      if($('#buscador').val() != ""){
+        var url = 'http://streamua.ddnsking.com/peliculas.php';
+        url += '?buscar='+$('#buscador').val();
+        window.location.href = url;
+      }
+      else{
+        window.location.href = 'http://streamua.ddnsking.com/peliculas.php';
+      }
+    }
+  });
+</script>
 </html>

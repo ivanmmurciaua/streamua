@@ -1,6 +1,6 @@
 <?php
 
-  include('../db/database.php');
+  include('db/database.php');
   session_start();
 
   $email = $_SESSION['emailusu'];
@@ -24,14 +24,26 @@
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-        <a href="../index.php">Inicio</a>
-        <a href="anadirContenido.php">Añadir Contenido</a>
-        <a href="listarContenido.php">Listar Contenido</a>
-        <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
-        <a href="anadirCaratula.php">Añadir Caratula</a>
-        <a href="listarCodigoPromocion.php">Listar Codigo promocion</a>
-        <a href="anadirNovedad.php">Añadir Novedad</a>
-        <a href="#" class="activo">Listar Novedades</a>
+        <a href="index.php">Inicio</a>
+        <a href="series.php">Series</a>
+        <a href="peliculas.php">Películas</a>
+        <a href="novedadesCliente.php" class="activo">Novedades</a>
+
+        <?php
+          if(isset($_SESSION["logged"])) {
+            echo "<a href='milista.php'> Mi Lista </a>";  
+          }
+        ?>
+        
+        <?php
+          if(!isset($_SESSION["logged"])) {
+            echo "<a href='./login.php'>Login</a>"; 
+          }
+          else{
+            echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
+          }
+        ?>
+        
       </nav>
     </div>
   </header>
@@ -60,7 +72,7 @@
                   </thead>
                   <tbody>
                       <?php
-                                $query =$conn -> query("SELECT * from Novedades where emailAdministrador='$email' order by fechaSalida");
+                                $query =$conn -> query("SELECT * from Novedades order by fechaSalida");
                                 while($row = $query->fetch_assoc())
                                 {
                                       $idNovedades = $row['idNovedades'];
@@ -74,10 +86,7 @@
                       <tr>
                           <td><?php echo utf8_encode($titulo)?></td>
                           <td><?php echo utf8_encode($descripcion)?></td>
-                          <td><?php echo utf8_encode($fechaSalida)?></td> 
-                          <td><a href='modificarNovedad.php?titulo=<?=$titulo?>&idNovedades=<?=$idNovedades?>&descripcion=<?=$descripcion?>&emailAdministrador=<?=$emailAdministrador?>' target="popup" onClick="window.open(this.href, this.target, 'width=400,height=820'); return false;"><img src="../img/iconoEditar.jpg" alt="Editar Novedad"></a></td>
-                          <td><a href='borrarNovedad.php?titulo=<?=$titulo?>&idNovedades=<?=$idNovedades?>' target="popup" onClick="window.open(this.href, this.target, 'width=350,height=320'); return false;"><img src="../img/iconoBorrar.jpg" alt="Borrar Novedad"></a></td>
-                     
+                          <td><?php echo utf8_encode($fechaSalida)?></td>                     
                       </tr>
                       <?php
                 }

@@ -85,9 +85,9 @@ session_start();
         <label class='label'>Idioma</label>
         <input class='text-input' id='idioma' name='idioma' required type='text'>
       </p>
-        <p class='field half required'>
+        <p style="display:none" class='field half required error'>
         <label class='label'>Tipo suscripción</label>
-        <input class='text-input' id='tiposusc' name='tiposusc' required type='text'>
+        <input class='text-input' id='tiposusc' name='tiposusc' required type='text' value='normal' readonly>
       </p>
       <p class='field required half'>
         <label class='label'>Email</label>
@@ -95,7 +95,7 @@ session_start();
       </p>
       <p class='field half required error'>
         <label class='label'>Password</label>
-        <input class='text-input' id='password' name='password' required type='password'>
+        <input class='text-input' id='password' name='password' type='password' required>
       </p>
       <p class='field half'>
         <input id="fservice" class="button" value="Registrarme" type="button"></input>
@@ -118,15 +118,18 @@ $(document).ready(function() {
     var email = $('#email').val();
     var password = $('#password').val();
 
-    $.ajax({
-      type: 'POST',
-      url: 'admin/cruds/registro.php',
-      data: {nombre:nombre, ap1:ap1, ap2:ap2, tiposusc:tiposusc, idioma:idioma, email:email, password:password},
-      success: function(data) {
-        alert(data);
-        window.location.href = "/login.php";
-      }
-    });
+    if(nombre != "" & ap1 != "" & ap2 != "" &tiposusc != "" & idioma != "" & email != "" & password != "") {
+
+        $.ajax({
+          type: 'POST',
+          url: 'admin/cruds/registro.php',
+          data: {nombre:nombre, ap1:ap1, ap2:ap2, tiposusc:tiposusc, idioma:idioma, email:email, password:password},
+          success: function(data) {
+            alert(data);
+            window.location.href = "/login.php";
+          }
+        });
+    }
   });
 });
 </script>

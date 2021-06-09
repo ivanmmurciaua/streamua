@@ -1,6 +1,9 @@
 <?php
 
   include('../db/database.php');
+  session_start();
+
+  $email = $_SESSION['emailusu'];
 
 ?>
 
@@ -25,7 +28,8 @@
         <a href="anadirContenido.php">Añadir Contenido</a>
         <a href="listarContenido.php">Listar Contenido</a>
         <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
-        <a href="listarContenido.php" class="activo">Listar Codigo promocion</a>
+        <a href="anadirCaratula.php">Añadir Caratula</a>
+        <a href="#" class="activo">Listar Codigo promocion</a>
         <a href="anadirNovedad.php">Añadir Novedad</a>
         <a href="listarNovedades.php">Listar Novedades</a>
       </nav>
@@ -60,7 +64,7 @@
                   </thead>
                   <tbody>
                       <?php
-                                $query =$conn -> query("SELECT * from CodigoPromocion order by fechaCreacion");
+                                $query =$conn -> query("SELECT * from CodigoPromocion where emailAdministrador='$email' order by fechaCreacion");
                                 while($row = $query->fetch_assoc())
                                 {
                                       $codProm = $row['codProm'];
@@ -80,7 +84,6 @@
                           <td><?php echo utf8_encode($descuento)?></td>
                           <td><?php echo utf8_encode($emailAdministrador)?></td>
                           <td><a href='modificarCodigoPromocion.php?codProm=<?=$codProm?>&fechaExpiracion=<?=$fechaExpiracion?>&descuento=<?=$descuento?>&emailAdministrador=<?=$emailAdministrador?>' target="popup" onClick="window.open(this.href, this.target, 'width=400,height=820'); return false;"><img src="../img/iconoEditar.jpg" alt="Editar CodigoPromocion"></a></td>
-                          <td><a href='borrarCodigoPromocion.php?codProm=<?=$codProm?>' target="popup" onClick="window.open(this.href, this.target, 'width=350,height=320'); return false;"><img src="../img/iconoBorrar.jpg" alt="Borrar CodigoPromocion"></a></td>
                      
                       </tr>
                       <?php

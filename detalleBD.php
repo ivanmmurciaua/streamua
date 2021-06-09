@@ -6,7 +6,7 @@ $valoracion = $_POST['valoracion'];
 $emailCliente = $_POST['emailCliente'];
 $idContenido = $_POST['idContenido'];
 
-$qry = "INSERT into Seleccionar(idContenido,emailCliente,puntuacion) VALUES ('$idContenido','$emailCliente','2')";
+$qry = "INSERT into Seleccionar(idContenido,emailCliente,puntuacion) VALUES ('$idContenido','$emailCliente','$valoracion')";
 
 if(!mysqli_query($conn,$qry)) {
 	echo  $conn->error;

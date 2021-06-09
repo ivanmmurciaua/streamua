@@ -21,12 +21,12 @@ session_start();
     <div class="contenedor">
       <h2 class="logotipo">STREAMUA</h2>
       <nav>
-
-        <a href="#" class="activo">Inicio</a>
-        <a href="anadirContenido.php">Añadir Contenido</a>
+        <a href="../index.php">Inicio</a>
+        <a href="#" class="activo">Añadir Contenido</a>
         <a href="listarContenido.php">Listar Contenido</a>
         <a href="anadirCodigoPromocion.php">Añadir Codigo promocion</a>
-        <a href="listarContenido.php">Listar Codigo promocion</a>
+        <a href="anadirCaratula.php">Añadir Caratula</a>
+        <a href="listarCodigoPromocion.php">Listar Codigo promocion</a>
         <a href="anadirNovedad.php">Añadir Novedad</a>
         <a href="listarNovedades.php">Listar Novedades</a>
       </nav>
@@ -69,28 +69,23 @@ session_start();
     <label class='label'>Genero</label>
     <input class='text-input' id='tipoGenero' name='tipoGenero' required type='text'>
   </p>
+  <p class='field half required'>
+      <select  id="tipoContenido">
+        <option id="1" name="1">Serie</option>
+        <option id="2" name="2">Pelicula</option>
+      </select>
+  </p>
     <p class='field half required error'>
     <label class='label'>Email administrador</label>
     <input class='text-input' id='emailAdministrador' name='emailAdministrador' required type='email' value="<?=utf8_encode($_SESSION['emailusu'])?>" readonly="">
   </p>
+  
   <p class='field half'>
     <input id="fservice" class="button" value="Enviar" type="button"></input>
   </p>
 </form>
-
-<form enctype="multipart/form-data" action="./cruds/anyadirPortada.php" method="post">
-  <p>
-    <label class='label'>idContenido</label>
-    <input type="number" name="idContenido" size="10">
-  </p>
-  <p>
-    <label class='label'>Caratula</label>
-    <input type="file" name="archivito">
-  </p>
-  <input type="submit" value="Subir portada">
-</form>
   
-  <!-- CIERRE HACER AQUI COSAS -->
+    <!-- CIERRE HACER AQUI COSAS -->
   
 </body>
 
@@ -106,15 +101,20 @@ $(document).ready(function() {
     var director = document.getElementById('director').value;
     var emailAdministrador = document.getElementById('emailAdministrador').value;;
     var tipoGenero = document.getElementById('tipoGenero').value;
-    $.ajax({
-      type: 'POST',
-      url: 'cruds/anadirContenido.php',
-      data: {urlContenido:urlContenido, titulo:titulo, resumen:resumen, idioma:idioma, subtitulos:subtitulos, actores:actores, director:director, emailAdministrador:emailAdministrador, tipoGenero:tipoGenero},
-      success: function(data) {
-        alert(data);
-        window.location.reload();
-      }
-    });
+    var tipoContenido = document.getElementById('tipoContenido').value;
+
+    if(urlContenido != "" & titulo != "" & resumen != "" & idioma != "" & subtitulos != "" & actores != "" & director != "" & tipoGenero != "") {
+
+      $.ajax({
+        type: 'POST',
+        url: 'cruds/anadirContenido.php',
+        data: {urlContenido:urlContenido, titulo:titulo, resumen:resumen, idioma:idioma, subtitulos:subtitulos, actores:actores, director:director, emailAdministrador:emailAdministrador, tipoGenero:tipoGenero, tipoContenido:tipoContenido},
+        success: function(data) {
+          alert(data);
+          window.location.reload();
+        }
+      });
+    }
   });
 });
 </script>

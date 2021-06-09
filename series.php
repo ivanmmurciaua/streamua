@@ -9,7 +9,7 @@ include('./db/database.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilosIndex.css">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
   <title>StreamUA</title>
 </head>
 <style type="text/css">
@@ -28,6 +28,11 @@ include('./db/database.php');
     align-items: center;
     justify-content: center;
     cursor: pointer;
+  }
+  #buscador{
+    width: 500px;
+    height: 30px;
+    border-radius: 10px;
   }
 </style>
 <body>
@@ -59,12 +64,21 @@ include('./db/database.php');
   </header>
   <div class="contenedor-titulo-controles">
     <h3>Series</h3>
-    <div class="indicadores"></div>
+    <div class="indicadores"></div><input type="search" placeholder="   Escribe la serie a buscar y dale a intro" id="buscador" />
   </div>
+  
   <div id="contenedor_peliculas">
     <div class="row">
       <?php
-        $qry = "SELECT * FROM Contenido WHERE idContenido IN (SELECT idContenido FROM Serie)";
+
+        if(isset($_GET['buscar'])){
+          $srch = "AND titulo LIKE '%".$_GET['buscar']."%'";  
+        }
+        else{
+          $srch = "";
+        }
+
+        $qry = "SELECT * FROM Contenido WHERE idContenido IN (SELECT idContenido FROM Serie) $srch";
 
         if ($resultado = $conn->query($qry)) {
 
@@ -86,4 +100,19 @@ include('./db/database.php');
     </div>    
   </div>
 </body>
+<script type="text/javascript">
+  //ENTER SOBRE LA CASILLA
+  $('#buscador').keypress(function(e){
+    if(e.which == 13){
+      if($('#buscador').val() != ""){
+        var url = 'http://streamua.ddnsking.com/series.php';
+        url += '?buscar='+$('#buscador').val();
+        window.location.href = url;
+      }
+      else{
+        window.location.href = 'http://streamua.ddnsking.com/series.php';
+      }
+    }
+  });
+</script>
 </html>

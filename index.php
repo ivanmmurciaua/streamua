@@ -18,19 +18,11 @@ session_start();
 				<a href="#" class="activo">Inicio</a>
 				<a href="series.php">Series</a>
 				<a href="peliculas.php">Películas</a>
+				<a href="novedadesCliente.php">Novedades</a>
 
 				<?php
 					if(isset($_SESSION["logged"])) {
 						echo "<a href='milista.php'> Mi Lista </a>";	
-					}
-				?>
-				
-				<?php
-					if(!isset($_SESSION["logged"])) {
-						echo "<a href='./login.php'>Login</a>";	
-					}
-					else{
-						echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
 					}
 				?>
 
@@ -39,6 +31,16 @@ session_start();
 					}
 					else{
 						echo "<a href='./admin/listarContenido.php'>Admin</a>";
+					}
+				?>
+
+				
+				<?php
+					if(!isset($_SESSION["logged"])) {
+						echo "<a href='./login.php'>Login</a>";	
+					}
+					else{
+						echo "<a href='./cerrarsesion.php'>Cerrar sesión</a>";
 					}
 				?>
 				
@@ -93,46 +95,46 @@ session_start();
 							<a href="#"><img src="img/7.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/1.png" alt=""></a>
+							<a href="#"><img src="img/8.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/2.png" alt=""></a>
+							<a href="#"><img src="img/9.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/3.png" alt=""></a>
+							<a href="#"><img src="img/10.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/1.png" alt=""></a>
+							<a href="#"><img src="img/11.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/2.png" alt=""></a>
+							<a href="#"><img src="img/12.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/3.png" alt=""></a>
+							<a href="#"><img src="img/13.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/4.png" alt=""></a>
+							<a href="#"><img src="img/14.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/5.png" alt=""></a>
+							<a href="#"><img src="img/15.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/6.png" alt=""></a>
+							<a href="#"><img src="img/16.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/7.png" alt=""></a>
+							<a href="#"><img src="img/17.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/1.png" alt=""></a>
+							<a href="#"><img src="img/18.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/2.png" alt=""></a>
+							<a href="#"><img src="img/19.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/3.png" alt=""></a>
+							<a href="#"><img src="img/20.png" alt=""></a>
 						</div>
 						<div class="pelicula">
-							<a href="#"><img src="img/4.png" alt=""></a>
+							<a href="#"><img src="img/21.png" alt=""></a>
 						</div>
 					</div>
 				</div>
