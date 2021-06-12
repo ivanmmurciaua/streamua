@@ -8,7 +8,7 @@
 * [Descripción](#description)
 * [Parte Pública](#public-part)  
 * [Parte Privada](#private-part)
-* [Parte Privada](#private-part-admin)
+* [Parte Privada Admin](#private-part-admin)
 * [Instrucciones para el funcionamiento de la aplicación](#Instrucctions)
 * [Presentación](#presentation)
 * [Problemas Asociados](#asociated-problems)
