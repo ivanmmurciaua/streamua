@@ -73,4 +73,5 @@ Los **admins** podrán:
 ## <a name="asociated-problems"></a>Problemas asociados:
 
   -La mayoría de los cambios se han dado en el esquema inicial, ya que en un primer momento debido a no pensar mucho en la implementación cometimos fallos de concepto.
+  
   -En menor medida, algunos problemas asociados a la base de datos como rediseño de procedures, functions y triggers.
