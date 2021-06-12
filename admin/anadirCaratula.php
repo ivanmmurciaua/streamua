@@ -15,6 +15,24 @@ session_start();
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
   <title>StreamUA</title>
 </head>
+<style type="text/css">
+  .label{
+    color:white;
+  }
+  #subir{
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+    background: #E8474C;
+    color: white;
+    font-weight: bold;
+    width: auto;
+    margin-left: auto;
+    font-weight: bold;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+</style>
 
 <body>
   <header>
@@ -46,7 +64,7 @@ session_start();
     <input class='text-input' id='archivito' name='archivito' required type='file'>
   </p>
   <p class='field half'>
-    <input type="submit" value="Subir portada">
+    <input id="subir" type="submit" value="Subir portada">
   </p>
 </form>
   
