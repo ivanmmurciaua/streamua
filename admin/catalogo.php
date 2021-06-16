@@ -36,9 +36,7 @@
     </div>
   </header>
 
-  <!-- HACER AQUI COSAS -->
-
-<!-- Listado Visitas -->
+<!-- Listado-->
     <section id="alumnos">
       <div class="container">
         <br>
@@ -49,198 +47,191 @@
              <div class="row">
                <div class="col-md-12">
                   <div class="form-group">
+
+                  <!-- Tamaño de la base de datos -->
                   <table id="tabla" class="table table-striped">
-                  <thead>
+                    <thead>
                       <tr>
-                          <th>Tamaño BBDD</th>
+                        <th>Tamaño BBDD</th>
                       </tr>
-                  </thead>
-                  <tbody>
-                      <?php
-                                // TAMAÑO BBDD
-                                $query1 =$conn -> query("SELECT SUM((data_length+index_length)/1024/1024) AS 'tamanyo', 'MB' FROM information_schema.tables WHERE table_schema='gi_streamua2'");
+                    </thead>
+                    <tbody>
 
-                                while($row = $query1->fetch_assoc())
-                                {
-                                      $tamanyo = $row['tamanyo'];
-                                }
-                                                                                                                                                                               
-                        ?>
-                             
+                      <?php
+                        // TAMAÑO BBDD
+                        $query1 =$conn -> query("SELECT SUM((data_length+index_length)/1024/1024) AS 'tamanyo', 'MB' FROM information_schema.tables WHERE table_schema='gi_streamua2'");
+
+                       while($row = $query1->fetch_assoc()){
+                          $tamanyo = $row['tamanyo'];
+                        }
+                                                                                                                                                                                 
+                      ?>
+                               
                       <tr>
-                          <td><?php echo utf8_encode($tamanyo)?> MB</td>                      
+                        <td><?php echo utf8_encode($tamanyo)?> MB</td>                      
                       </tr>
-                  </tbody>
+                    </tbody>
                   </table>
                   <br>
+
+                  <!-- Tamaño de las tablas -->
                   <table id="tabla" class="table table-striped">
-                  <thead>
+                    <thead>
                       <tr>
-                          <th>Tamaño de tablas</th>
+                        <th>Tamaño de tablas</th>
                       </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                       <?php
-                                // TAMAÑO BBDD
-                                $query1 =$conn -> query("SELECT TABLE_NAME, (data_length+index_length)/1024/1024 AS 'tamanyo', 'MB' FROM information_schema.tables WHERE table_schema='gi_streamua2'");
+                        // TAMAÑO TABLES
+                        $query1 =$conn -> query("SELECT TABLE_NAME, (data_length+index_length)/1024/1024 AS 'tamanyo', 'MB' FROM information_schema.tables WHERE table_schema='gi_streamua2'");
 
-                                while($row = $query1->fetch_assoc())
-                                {
-                                      $tablename = $row['TABLE_NAME'];
-                                      $tamanyo = $row['tamanyo'];
-                                      if(is_null($tamanyo)) $tamanyo = 0;
-                                                                                                                                                                               
-                        ?>
-                             
-                      <tr>
-                          <th><?php echo utf8_encode($tablename)?></th>                     
-                          <td><?php echo utf8_encode($tamanyo)?> MB</td>                     
-                      </tr>
+                        while($row = $query1->fetch_assoc()){
+                          $tablename = $row['TABLE_NAME'];
+                          $tamanyo = $row['tamanyo'];
+                          // Controlamos las vistas
+                          if(is_null($tamanyo)) $tamanyo = 0;
+                      ?>
+                          <tr>
+                            <th><?php echo utf8_encode($tablename)?></th>                     
+                            <td><?php echo utf8_encode($tamanyo)?> MB</td>                     
+                          </tr>
 
                       <?php
                         }
                       ?>
-                  </tbody>
+                    </tbody>
                   </table>
                   <br>
+
+                  <!-- Procedimientos -->
                   <table id="tabla" class="table table-striped">
-                  <thead>
+                    <thead>
                       <tr>
-                          <th>Procedimientos</th>
+                        <th>Procedimientos</th>
                       </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                       <?php
-                                // TAMAÑO BBDD
-                                $query1 =$conn -> query(" SELECT SPECIFIC_NAME FROM information_schema.ROUTINES WHERE ROUTINE_SCHEMA LIKE 'gi_streamua2' AND ROUTINE_TYPE LIKE 'PROCEDURE'");
+                        // PROCEDURES
+                        $query1 =$conn -> query(" SELECT SPECIFIC_NAME FROM information_schema.ROUTINES WHERE ROUTINE_SCHEMA LIKE 'gi_streamua2' AND ROUTINE_TYPE LIKE 'PROCEDURE'");
 
-                                while($row = $query1->fetch_assoc())
-                                {
-                                      $SPECIFIC_NAME = $row['SPECIFIC_NAME'];
-                                
-                                                                                                                                                                               
-                        ?>
-                             
-                      <tr>
-                          <td><?php echo utf8_encode($SPECIFIC_NAME)?></td>                      
-                      </tr>
+                        while($row = $query1->fetch_assoc()){
+                          $SPECIFIC_NAME = $row['SPECIFIC_NAME'];
+                      ?>
+                          <tr>
+                            <td><?php echo utf8_encode($SPECIFIC_NAME)?></td>                      
+                          </tr>
                       <?php
                         }
                       ?>
-                  </tbody>
-                  </table>
-<br>
-                                    <table id="tabla" class="table table-striped">
-                  <thead>
-                      <tr>
-                          <th>Funciones</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <?php
-                                // TAMAÑO BBDD
-                                $query33 =$conn -> query("  SELECT SPECIFIC_NAME FROM information_schema.ROUTINES WHERE ROUTINE_SCHEMA LIKE 'gi_streamua2' AND ROUTINE_TYPE LIKE 'FUNCTION'");
-
-                                while($row = $query33->fetch_assoc())
-                                {
-                                      $SPECIFIC_NAME = $row['SPECIFIC_NAME'];
-                                
-                                                                                                                                                                               
-                        ?>
-                             
-                      <tr>
-                          <td><?php echo utf8_encode($SPECIFIC_NAME)?></td>                      
-                      </tr>
-                      <?php
-                        }
-                      ?>
-                  </tbody>
+                    </tbody>
                   </table>
                   <br>
-                                    <table id="tabla" class="table table-striped">
-                  <thead>
-                      <tr>
-                          <th>Eventos</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <?php
-                                // TAMAÑO BBDD
-                                $query22 =$conn -> query("SELECT EVENT_NAME FROM information_schema.EVENTS WHERE EVENT_SCHEMA LIKE 'gi_streamua2'");
 
-                                while($row = $query22->fetch_assoc())
-                                {
-                                      $EVENT_NAME = $row['EVENT_NAME'];
-                                
-                                                                                                                                                                               
-                        ?>
-                             
-                      <tr>
-                          <td><?php echo utf8_encode($EVENT_NAME)?></td>                      
-                      </tr>
-                      <?php
-                        }
-                      ?>
-                  </tbody>
-                  </table>
+                  <!-- Funciones -->
                   <table id="tabla" class="table table-striped">
-                  <thead>
+                    <thead>
                       <tr>
-                          <th>Triggers</th>
+                        <th>Funciones</th>
                       </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                       <?php
+                        // FUNCTIONS
+                        $query33 =$conn -> query("  SELECT SPECIFIC_NAME FROM information_schema.ROUTINES WHERE ROUTINE_SCHEMA LIKE 'gi_streamua2' AND ROUTINE_TYPE LIKE 'FUNCTION'");
 
-                                // TAMAÑO BBDD
-                                $query1 =$conn -> query("SELECT TRIGGER_NAME FROM information_schema.TRIGGERS WHERE TRIGGER_SCHEMA LIKE 'gi_streamua2'");
-
-                                while($row = $query1->fetch_assoc())
-                                {
-                                      $TRIGGER_NAME = $row['TRIGGER_NAME'];
-                                
-                                                                                                                                                                               
-                        ?>
-                             
-                      <tr>
-                          <td><?php echo utf8_encode($TRIGGER_NAME)?></td>                      
-                      </tr>
+                        while($row = $query33->fetch_assoc()){
+                          $SPECIFIC_NAME = $row['SPECIFIC_NAME'];
+                      ?>         
+                          <tr>
+                            <td><?php echo utf8_encode($SPECIFIC_NAME)?></td>                      
+                          </tr>
                       <?php
                         }
                       ?>
-                  </tbody>
-                  <br>
+                    </tbody>
                   </table>
                   <br>
-                        <table id="tabla" class="table table-striped">
-                  <thead>
+
+                  <!-- Eventos -->
+                  <table id="tabla" class="table table-striped">
+                    <thead>
                       <tr>
-                          <th>Vistas</th>
+                        <th>Eventos</th>
                       </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                       <?php
-
-                                // TAMAÑO BBDD
-                                $query1 =$conn -> query("SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA LIKE 'gi_streamua2'");
-
-                                while($row = $query1->fetch_assoc())
-                                {
-                                      $TABLE_NAME = $row['TABLE_NAME'];
-                                
-                                                                                                                                                                               
-                        ?>
-                             
-                      <tr>
-                          <td><?php echo utf8_encode($TABLE_NAME)?></td>                      
-                      </tr>
+                        // EVENTS
+                        $query22 =$conn -> query("SELECT EVENT_NAME FROM information_schema.EVENTS WHERE EVENT_SCHEMA LIKE 'gi_streamua2'");
+                                  
+                        while($row = $query22->fetch_assoc()){
+                          $EVENT_NAME = $row['EVENT_NAME'];
+                      ?>        
+                          <tr>
+                            <td><?php echo utf8_encode($EVENT_NAME)?></td>                      
+                          </tr>
                       <?php
                         }
                       ?>
-                  </tbody>
+                    </tbody>
                   </table>
+                  <br>
+
+                  <!-- Triggers -->
+                  <table id="tabla" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Triggers</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        // TAMAÑO BBDD
+                        $query1 =$conn -> query("SELECT TRIGGER_NAME FROM information_schema.TRIGGERS WHERE TRIGGER_SCHEMA LIKE 'gi_streamua2'");
+
+                        while($row = $query1->fetch_assoc()){
+                          $TRIGGER_NAME = $row['TRIGGER_NAME'];
+                      ?>
+                          <tr>
+                            <td><?php echo utf8_encode($TRIGGER_NAME)?></td>                      
+                          </tr>
+                      <?php
+                        }
+                      ?>
+                    </tbody>
+                  </table>
+                  <br>
+
+                  <!-- Vistas -->
+                  <table id="tabla" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Vistas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        // VIEWS
+                        $query1 =$conn -> query("SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA LIKE 'gi_streamua2'");
+
+                        while($row = $query1->fetch_assoc()){
+                          $TABLE_NAME = $row['TABLE_NAME'];
+                      ?>       
+                          <tr>
+                            <td><?php echo utf8_encode($TABLE_NAME)?></td>                      
+                          </tr>
+                      <?php
+                        }
+                      ?>
+                    </tbody>
+                  </table>
+                  <br>
+                  <br>
+                  <br>
+
                   </div>
-                                                                                                                                                                                                   
                 </div>
               </div>
           </form>
@@ -248,9 +239,6 @@
         </div>
       </div>      
     </section>
-
-  <!-- CIERRE HACER AQUI COSAS -->
   
 </body>
-
 </html>
